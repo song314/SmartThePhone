@@ -4,9 +4,8 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />     
-	
-    
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
@@ -16,6 +15,18 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <service
+            android:name="MainService"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <receiver android:name="com.example.photoutils.StaticReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name="com.example.photoutils.MainActivity"
             android:label="@string/app_name" >
